@@ -4,9 +4,16 @@ import { SongsController } from './songs.controller';
 
 @Module({
   controllers: [SongsController],
-  providers: [SongsService, {
-    provide: 'CONNECTION',
-    useValue: 'This is a connection string',
-  }],
+  providers: [
+    {
+      provide: SongsService,
+      useClass: SongsService,
+    }
+  ],
+
+  // providers: [SongsService, {
+  //   provide: 'CONNECTION',
+  //   useValue: 'This is a connection string',
+  // }],
 })
 export class SongsModule { }
